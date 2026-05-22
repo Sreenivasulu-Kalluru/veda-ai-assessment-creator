@@ -72,4 +72,3 @@ cd veda-ai
 
 4. Open your browser and navigate to `http://localhost:3000`.
 
----
