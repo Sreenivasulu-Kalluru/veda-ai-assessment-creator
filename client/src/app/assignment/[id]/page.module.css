@@ -1,0 +1,211 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 3rem;
+}
+
+.actionBar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.paper {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 3rem 4rem;
+  box-shadow: var(--shadow-sm);
+  font-family: 'Times New Roman', Times, serif; /* Traditional exam paper look */
+  color: #000;
+}
+
+.header {
+  text-align: center;
+  border-bottom: 2px solid #000;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.schoolName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.subjectClass {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.examDetails {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.studentInfo {
+  margin-bottom: 2rem;
+}
+
+.infoRow {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.infoLine {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.line {
+  border-bottom: 1px solid #000;
+  width: 200px;
+  height: 20px;
+}
+
+.section {
+  margin-top: 2rem;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.sectionInstruction {
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.questionList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.questionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.questionNumber {
+  min-width: 20px;
+}
+
+.questionContent {
+  flex: 1;
+}
+
+.difficultyTag {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+  margin-left: 0.5rem;
+}
+
+.tag-easy {
+  background-color: rgba(40, 199, 111, 0.1);
+  color: var(--success-color);
+}
+
+.tag-moderate {
+  background-color: rgba(255, 107, 74, 0.1);
+  color: var(--secondary-color);
+}
+
+.tag-hard {
+  background-color: rgba(234, 84, 85, 0.1);
+  color: var(--danger-color);
+}
+
+.marks {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.loadingState, .errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-color);
+  border-top-color: var(--secondary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .paper {
+    padding: 1.5rem 1rem;
+  }
+  
+  .infoRow {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .line {
+    width: 100% !important;
+  }
+  
+  .infoLine {
+    flex: 1;
+    width: 100%;
+  }
+  
+  .schoolName {
+    font-size: 1.25rem;
+  }
+  
+  .examDetails {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  .actionBar {
+    justify-content: center;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .actionBar {
+    display: none !important;
+  }
+  .paper {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .container {
+    padding: 0 !important;
+    max-width: 100% !important;
+  }
+}
