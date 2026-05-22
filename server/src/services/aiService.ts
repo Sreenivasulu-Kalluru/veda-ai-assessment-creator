@@ -6,6 +6,10 @@ dotenv.config();
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export const generateQuestionPaper = async (promptData: any): Promise<any> => {
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error('CRITICAL ERROR: GEMINI_API_KEY is missing in your production environment variables! Please add it in your Render dashboard.');
+  }
+
   const { topic, totalQuestions, totalMarks, instructions, questionTypes } = promptData;
 
   const prompt = `
@@ -37,10 +41,15 @@ export const generateQuestionPaper = async (promptData: any): Promise<any> => {
       }
     });
 
-    const text = response.text || "{}";
+    let text = response.text || "{}";
+    
+    if (text.includes('```')) {
+      text = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+    }
+    
     return JSON.parse(text);
-  } catch (error) {
+  } catch (error: any) {
     console.error('AI Generation Error:', error);
-    throw new Error('Failed to generate content from AI');
+    throw new Error(error.message || 'Failed to generate content from AI');
   }
 };

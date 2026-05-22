@@ -57,7 +57,7 @@ const worker = new Worker('assignment-generation', async (job: Job) => {
     await Assignment.findByIdAndUpdate(assignmentId, { status: 'failed' });
     
     const io = getIO();
-    io.to(assignmentId).emit('assignment_failed', { assignmentId, error: 'Failed to generate assignment' });
+    io.to(assignmentId).emit('assignment_failed', { assignmentId, error: error instanceof Error ? error.message : 'Failed to generate assignment' });
     
     throw error;
   }
